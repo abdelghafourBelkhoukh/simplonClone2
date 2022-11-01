@@ -1,0 +1,33 @@
+package com.simplonclone.simplonclone2.controller;
+
+import com.simplonclone.simplonclone2.entity.Apprenant;
+import com.simplonclone.simplonclone2.entity.Formateur;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+@WebServlet(name = "ApprenantServlet", value = "/ApprenantServlet")
+public class ApprenantServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            com.simplonclone.simplonclone2.services.Brief brief = new com.simplonclone.simplonclone2.services.Brief();
+            ArrayList<com.simplonclone.simplonclone2.entity.Brief> briefs = (ArrayList<com.simplonclone.simplonclone2.entity.Brief>) brief.getAll();
+            request.setAttribute("briefs", briefs);
+            request.getRequestDispatcher("pages/apprenant.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
+
+    }
+}
