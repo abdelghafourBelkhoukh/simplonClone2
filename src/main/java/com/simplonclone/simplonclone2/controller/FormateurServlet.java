@@ -6,6 +6,7 @@ import com.simplonclone.simplonclone2.entity.Brief;
 import com.simplonclone.simplonclone2.entity.Formateur;
 import com.simplonclone.simplonclone2.entity.Promos;
 import com.simplonclone.simplonclone2.services.Apprenant;
+import com.simplonclone.simplonclone2.services.SendEmail;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -58,6 +59,7 @@ public class FormateurServlet extends HttpServlet {
                     int briefId = Integer.parseInt(request.getParameter("briefId"));
                     com.simplonclone.simplonclone2.services.Brief briefService = new com.simplonclone.simplonclone2.services.Brief();
                     briefService.assignBriefToPromo(promoId, briefId);
+                    new SendEmail(promoId);
                     response.sendRedirect("/FormateurServlet");
                     break;
                 case "assignApprenantToPromo":

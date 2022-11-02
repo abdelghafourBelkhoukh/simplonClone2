@@ -13,6 +13,7 @@ public class Apprenant {
 
 
     public com.simplonclone.simplonclone2.entity.Apprenant auth(String email, String password) {
+        System.out.println("Authentification en cours");
         ApprenantDao apprenantDao = new ApprenantDao();
         return apprenantDao.auth(email, password);
     }
@@ -25,5 +26,10 @@ public class Apprenant {
     public void assignToPromo(int apprenantId, int promoId1) {
         ApprenantDao apprenantDao = new ApprenantDao();
         apprenantDao.assignToPromo(apprenantId, promoId1);
+    }
+
+    public ArrayList<com.simplonclone.simplonclone2.entity.Apprenant> getApprenantById(int promoId) {
+        ApprenantDao apprenantDao = new ApprenantDao();
+        return apprenantDao.getApprenantById(promoId);
     }
 }

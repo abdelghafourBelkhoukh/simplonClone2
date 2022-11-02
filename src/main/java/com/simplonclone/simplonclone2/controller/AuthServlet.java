@@ -24,6 +24,7 @@ public class AuthServlet extends HttpServlet {
 
         if (role.equals("apprenant")) {
             Apprenant apprenant = new Apprenant();
+            System.out.println("apprenant");
             com.simplonclone.simplonclone2.entity.Apprenant apprenant1 = apprenant.auth(email, password);
             if (apprenant1 == null) {
                 //redirect to login page

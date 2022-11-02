@@ -33,6 +33,7 @@ public class ApprenantDao {
     }
 
     public Apprenant auth(String email, String password) {
+        System.out.println("Authentification en cours Dao");
         EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
         EntityManager entityManager = emfSingleton.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -67,8 +68,10 @@ public class ApprenantDao {
         ArrayList<Apprenant> apprenants;
         try {
             transaction.begin();
+            System.out.println("1111");
             apprenants = (ArrayList<Apprenant>) entityManager.createQuery("SELECT a FROM Apprenant a").getResultList();
             transaction.commit();
+            System.out.println(apprenants);
         } finally {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -95,5 +98,26 @@ public class ApprenantDao {
             }
             entityManager.close();
         }
+    }
+
+    public ArrayList<Apprenant> getApprenantById(int promoId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        ArrayList<Apprenant> apprenants;
+        try {
+            transaction.begin();
+            apprenants = (ArrayList<Apprenant>) entityManager.createQuery("SELECT a FROM Apprenant a WHERE a.promoId = :promoId", Apprenant.class)
+                    .setParameter("promoId", promoId)
+                    .getResultList();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return apprenants;
     }
 }
