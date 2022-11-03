@@ -21,7 +21,6 @@ public class ApprenantDao {
             apprenant.setLastname(lastname);
             apprenant.setEmail(email);
             apprenant.setPassword(password);
-            apprenant.setPromoId(1);
             entityManager.persist(apprenant);
             transaction.commit();
         } finally {
@@ -88,7 +87,11 @@ public class ApprenantDao {
 
         try {
             transaction.begin();
-            Apprenant apprenant = entityManager.find(Apprenant.class, apprenantId);
+            Apprenant apprenant = entityManager.createQuery("SELECT a FROM Apprenant a WHERE a.id = :id", Apprenant.class)
+                    .setParameter("id", apprenantId)
+                    .getSingleResult();
+            System.out.println(apprenant);
+            System.out.println("------------------------------------"+apprenantId);
             apprenant.setPromoId(promoId1);
             entityManager.persist(apprenant);
             transaction.commit();

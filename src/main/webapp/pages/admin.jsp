@@ -15,7 +15,7 @@
 <body>
 <%@include file="../components/header.jsp" %>
 
-<div class="w-full h-auto flex flex-row-reverse">
+<div class="w-full h-auto flex flex-row-reverse pt-10">
 
     <div class="flex flex-col justify-center w-[10%] h-[90vh] fixed px-[20px] ">
         <a href="#my-modal-2" class="btn border-0 bg-red-600 my-6">Add Formateur</a>
@@ -91,7 +91,7 @@
                     <input type="hidden" name="action" value="addPromo">
                     <input class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out" type="submit" value="submit"/>
                 </form>
-                    <button class="modal-action inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Cancel</button>
+<%--                    <button class="modal-action inline-block px-6 py-2 border-2 border-gray-800 text-gray-800 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Cancel</button>--%>
             </div>
         </div>
     </div>
@@ -106,6 +106,7 @@
                         <col class="w-5">
                         <col>
                         <col>
+                        <col>
                         <col class="w-5">
                     </colgroup>
                     <thead>
@@ -113,6 +114,7 @@
                         <th class="p-3 text-center">First Name</th>
                         <th class="p-3 text-center">Last Name</th>
                         <th class="p-3 text-center">Email</th>
+                        <th class="p-3 text-center">Promo</th>
                         <th class="p-3 text-center">Assign to promo</th>
                     </tr>
                     </thead>
@@ -133,6 +135,13 @@
                         </td>
                         <td class="px-3 py-2 text-center">
                             <p><%=formateur.getEmail()%></p>
+                        </td>
+                        <td class="px-3 py-2 text-center">
+                            <%if (formateur.getPromosByPromoId() != null) {%>
+                            <p><%=formateur.getPromosByPromoId().getName()%></p>
+                            <%} else {%>
+                            <p>Not assigned</p>
+                            <%}%>
                         </td>
                         <td class="px-3 py-2 text-center">
 
@@ -167,6 +176,7 @@
                         <col class="w-5">
                         <col>
                         <col>
+                        <col>
                         <col class="w-5">
                     </colgroup>
                     <thead>
@@ -174,6 +184,7 @@
                         <th class="p-3 text-center">First Name</th>
                         <th class="p-3 text-center">Last Name</th>
                         <th class="p-3 text-center">Email</th>
+                        <th class="p-3 text-center">Promo</th>
                         <th class="p-3 text-center">Assign to promo</th>
                     </tr>
                     </thead>
@@ -194,6 +205,13 @@
                         </td>
                         <td class="px-3 py-2 text-center">
                             <p><%=apprenant.getEmail()%></p>
+                        </td>
+                        <td class="px-3 py-2 text-center">
+                            <%if (apprenant.getPromosByPromoId() != null) {%>
+                            <p><%=apprenant.getPromosByPromoId().getName()%></p>
+                            <%} else {%>
+                            <p>Not assigned</p>
+                            <%}%>
                         </td>
                         <td class="px-3 py-2 text-center">
 
@@ -225,17 +243,11 @@
             <table class="w-full p-6 text-xs text-left whitespace-nowrap">
                 <colgroup>
                     <col class="w-5">
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
                     <col class="w-5">
                 </colgroup>
                 <thead>
                 <tr class="dark:bg-gray-700">
                     <th class="p-3">Name</th>
-                    <th class="p-3 text-center">Add promo</th>
                 </tr>
                 </thead>
                 <tbody class="border-y dark:bg-gray-900 dark:border-gray-700 ">
@@ -249,9 +261,6 @@
                 <tr>
                     <td class="px-3 py-2">
                         <p><%=promo.getName()%></p>
-                    </td>
-                    <td class="px-3 py-2 text-center">
-                        <p>add </p>
                     </td>
                 </tr>
 

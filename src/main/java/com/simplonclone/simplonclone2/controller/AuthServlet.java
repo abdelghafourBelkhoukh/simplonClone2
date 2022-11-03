@@ -28,9 +28,9 @@ public class AuthServlet extends HttpServlet {
             com.simplonclone.simplonclone2.entity.Apprenant apprenant1 = apprenant.auth(email, password);
             if (apprenant1 == null) {
                 //redirect to login page
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("pages/login.jsp");
             }
-            //set session
+
             HttpSession session = request.getSession();
             session.setAttribute("apprenant", apprenant1);
 
@@ -38,19 +38,29 @@ public class AuthServlet extends HttpServlet {
 
         } else if (role.equals("formateur")) {
             Formateur formateur = new Formateur();
-            if (formateur.auth(email, password) == null) {
+            com.simplonclone.simplonclone2.entity.Formateur formateur1 = formateur.auth(email, password);
+            if (formateur1 == null) {
                 //redirect to login page
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("pages/login.jsp");
             }
+
+            HttpSession session = request.getSession();
+            session.setAttribute("formateur", formateur1);
 
             response.sendRedirect("/FormateurServlet");
 
         } else if (role.equals("admin")) {
             Admin admin = new Admin();
-            if (admin.auth(email, password) == null) {
+            com.simplonclone.simplonclone2.entity.Admin admin1 = admin.auth(email, password);
+
+            if (admin1 == null) {
                 //redirect to login page
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("pages/login.jsp");
             }
+
+            HttpSession session = request.getSession();
+            session.setAttribute("admin", admin1);
+
             response.sendRedirect("/AdminServlet");
         } else {
             response.sendRedirect("index.jsp");

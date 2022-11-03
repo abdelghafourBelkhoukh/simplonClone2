@@ -22,7 +22,6 @@ public class FormateurDao {
             formateur.setLastname(lastname);
             formateur.setEmail(email);
             formateur.setPassword(password);
-//            formateur.setPromoId(1);
             entityManager.persist(formateur);
             transaction.commit();
         } finally {
@@ -91,7 +90,9 @@ public class FormateurDao {
 
         try {
             transaction.begin();
-            Formateur formateur = entityManager.find(Formateur.class, formateurId);
+            Formateur formateur = entityManager.createQuery("SELECT a FROM Formateur a WHERE a.id = :id", Formateur.class)
+                    .setParameter("id", formateurId)
+                    .getSingleResult();
             formateur.setPromoId(promoId);
             entityManager.persist(formateur);
             transaction.commit();

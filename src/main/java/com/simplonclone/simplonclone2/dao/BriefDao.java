@@ -90,7 +90,9 @@ public class BriefDao extends DataAccessObject<Brief> {
 
         try {
             transaction.begin();
-            Brief brief = entityManager.find(Brief.class, briefId);
+            Brief brief = entityManager.createQuery("SELECT b FROM Brief b WHERE b.id = :id", Brief.class)
+                    .setParameter("id", briefId)
+                    .getSingleResult();
             brief.setPromoId(promoId);
             entityManager.persist(brief);
             transaction.commit();

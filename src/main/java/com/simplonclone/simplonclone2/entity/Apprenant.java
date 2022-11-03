@@ -16,14 +16,14 @@ public class Apprenant {
     private String lastname;
     @Basic
     @Column(name = "promoId")
-    private int promoId;
+    private Integer promoId;
     @Basic
     @Column(name = "email")
     private String email;
     @Basic
     @Column(name = "password")
     private String password;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "promoId", referencedColumnName = "id", nullable = false , insertable = false, updatable = false)
     private Promos promosByPromoId;
 
@@ -51,7 +51,9 @@ public class Apprenant {
         this.lastname = lastname;
     }
 
-    public int getPromoId() {
+    public Integer getPromoId() {
+
+        if (promoId == null) return 0;
         return promoId;
     }
 
@@ -97,7 +99,12 @@ public class Apprenant {
         int result = id;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-        result = 31 * result + promoId;
+        if (promoId != null) {
+            result = 31 * result + promoId.hashCode();
+        }else {
+
+            result = 31 * result + 0;
+        }
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;

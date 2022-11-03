@@ -19,7 +19,7 @@
 <body>
 <%@include file="../components/header.jsp" %>
 
-<div class="w-full h-auto flex flex-row-reverse">
+<div class="w-full h-auto flex flex-row-reverse py-10">
     <div class="flex flex-col justify-center w-[10%] h-[90vh] fixed px-[20px]">
         <a href="#my-modal-3" class="btn border-0 bg-red-600 my-6">Add Brief</a>
 
@@ -72,7 +72,13 @@
                     <tr class="dark:bg-gray-700">
                         <td class="p-3 text-center"><%= brief.getName() %></td>
                         <td class="p-3 text-center"><%= brief.getDescription() %></td>
-                        <td class="p-3 text-center"><%= brief.getPromosByPromoId().getName() %></td>
+                        <td class="p-3 text-center">
+                            <%if (brief.getPromosByPromoId() != null) {%>
+                            <p><%=brief.getPromosByPromoId().getName()%></p>
+                            <%} else {%>
+                            <p>Not assigned</p>
+                            <%}%>
+                        </td>
 
                         <td class="p-3 text-center">
                             <form action="/FormateurServlet" method="post">
@@ -96,12 +102,13 @@
             </div>
         </div>
 
-        <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+        <div class="container p-2 mx-auto sm:p-4 dark:text-gray-100  mt-10">
             <h2 class="mb-4 text-2xl font-semibold leading-tight">Apprenant Table</h2>
             <div class="overflow-x-auto">
                 <table class="w-full p-6 text-xs text-left whitespace-nowrap">
                     <colgroup>
                         <col class="w-5">
+                        <col>
                         <col>
                         <col>
                         <col class="w-5">
@@ -111,6 +118,7 @@
                         <th class="p-3 text-center">First Name</th>
                         <th class="p-3 text-center">Last Name</th>
                         <th class="p-3 text-center">Email</th>
+                        <th class="p-3 text-center">Promo</th>
                         <th class="p-3 text-center">Assign to promo</th>
                     </tr>
                     </thead>
@@ -131,6 +139,13 @@
                         </td>
                         <td class="px-3 py-2 text-center">
                             <p><%=apprenant.getEmail()%></p>
+                        </td>
+                        <td class="px-3 py-2 text-center">
+                            <%if (apprenant.getPromosByPromoId() != null) {%>
+                            <p><%=apprenant.getPromosByPromoId().getName()%></p>
+                            <%} else {%>
+                            <p>Not assigned</p>
+                            <%}%>
                         </td>
                         <td class="px-3 py-2 text-center">
 

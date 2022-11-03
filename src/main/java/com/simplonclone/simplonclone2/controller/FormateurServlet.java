@@ -49,7 +49,6 @@ public class FormateurServlet extends HttpServlet {
                     Brief brief = new Brief();
                     brief.setName(title);
                     brief.setDescription(description);
-                    brief.setPromoId(1);
                     BriefDao briefDao = new BriefDao();
                     briefDao.create(brief);
                     response.sendRedirect("/FormateurServlet");

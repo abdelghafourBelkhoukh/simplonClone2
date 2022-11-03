@@ -16,7 +16,7 @@
 <body>
 <%@include file="../components/header.jsp" %>
 
-<div class="container p-2 mx-auto sm:p-4 dark:text-gray-100 h-[90vh]">
+<div class="container mx-auto  dark:text-gray-100 h-[90vh] px-60 pt-10">
     <h2 class="mb-4 text-2xl font-semibold leading-tight">brief Table</h2>
     <div class="overflow-x-auto">
         <table class="w-full p-6 text-xs text-left whitespace-nowrap">

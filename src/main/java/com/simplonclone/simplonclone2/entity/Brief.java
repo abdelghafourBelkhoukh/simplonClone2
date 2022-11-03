@@ -16,7 +16,7 @@ public class Brief {
     private String description;
     @Basic
     @Column(name = "promoId")
-    private int promoId;
+    private Integer promoId;
     @ManyToOne
     @JoinColumn(name = "promoId", referencedColumnName = "id", nullable = false , insertable = false, updatable = false)
     private Promos promosByPromoId;
@@ -45,7 +45,7 @@ public class Brief {
         this.description = description;
     }
 
-    public int getPromoId() {
+    public Integer getPromoId() {
         return promoId;
     }
 
@@ -73,7 +73,12 @@ public class Brief {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + promoId;
+        if (promoId != null) {
+            result = 31 * result + promoId.hashCode();
+        }else {
+
+            result = 31 * result + 0;
+        }
         return result;
     }
 
