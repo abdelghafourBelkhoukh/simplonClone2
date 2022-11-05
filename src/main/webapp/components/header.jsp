@@ -1,4 +1,4 @@
-<header role="banner" class="bg-[#CE3334] text-white h-[10vh]">
+<header role="banner" class="bg-[#CE3334] text-white h-[10vh] fixed w-full">
   <nav role="navigation" class="flex justify-between items-center h-full">
     <div class="flex justify-between w-1/4">
       <a href="/" class="flex items-center"
@@ -36,16 +36,21 @@
     >
     </div>
     <div class="w-1/4">
-      YouCode Safi 2022 Brendan Eich
+      <span class="px-5 py-2 border-[3.7px] border-white rounded-xl hover:shadow-[5px_5px_0px_0px_rgba(255,255,0)]">
+        YouCode Safi 2022 Brendan Eich
+      </span>
     </div>
     <div class="flex justify-between items-center">
-      <a href="/profile" class="sc-87c2614c-2 dwaGqv"
+      <a href="#" id="dropdownDefault" data-dropdown-toggle="dropdown" class="sc-87c2614c-2 dwaGqv"
       ><div class="mr-10 flex flex-col items-center">
+<%--        <label for="my-modal-3" class="">--%>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="sc-bf0a440d-0 jdUYLw">
           <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="colorStroke"></path>
           <path d="M17 19v-1.54c0-.786-.281-1.538-.781-2.093-.5-.555-1.178-.867-1.886-.867H9.667c-.708 0-1.386.312-1.886.867A3.131 3.131 0 007 17.459V19M12 11.5a3 3 0 100-6 3 3 0 000 6z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="colorStroke"></path></svg
         ><span class="sc-6a4c5dd9-0 sc-87c2614c-0 HdEwm jwTbEc">Profil</span>
-      </div></a
+<%--        </label>--%>
+      </div>
+      </a
       ><button class="mr-10">
       <div class="flex flex-col items-center">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="sc-bf0a440d-0 jdUYLw"><path d="M17.333 8.6c0-1.485-.562-2.91-1.562-3.96A5.208 5.208 0 0012 3c-1.415 0-2.771.59-3.771 1.64A5.745 5.745 0 006.667 8.6C6.667 15.133 4 17 4 17h16s-2.667-1.867-2.667-8.4zM14 20a2.186 2.186 0 01-.846.732A2.588 2.588 0 0112 21c-.405 0-.803-.092-1.154-.268A2.186 2.186 0 0110 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="colorStroke"></path></svg>
@@ -54,5 +59,26 @@
     </button>
     </div>
   </nav>
+
+
+
+  <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+          <form action="../AuthServlet" method="post">
+            <input type="hidden" name="action" value="logout">
+            <input type="submit" value="Log out">
+          </form>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
 </header>
 

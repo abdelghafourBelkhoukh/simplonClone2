@@ -18,29 +18,35 @@ import java.util.List;
 @WebServlet(name = "FormateurServlet", value = "/FormateurServlet")
 public class FormateurServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            com.simplonclone.simplonclone2.services.Apprenant apprenant = new com.simplonclone.simplonclone2.services.Apprenant();
-            ArrayList<com.simplonclone.simplonclone2.entity.Apprenant> apprenants = (ArrayList<com.simplonclone.simplonclone2.entity.Apprenant>) apprenant.getAll();
-            request.setAttribute("apprenants", apprenants);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (request.getSession().getAttribute("role") != "formateur") {
+            response.sendRedirect("pages/error505.jsp");
 
-            com.simplonclone.simplonclone2.services.Promo promo = new com.simplonclone.simplonclone2.services.Promo();
-            ArrayList<Promos> promos = (ArrayList<Promos>) promo.getAll();
-            request.setAttribute("promos", promos);
+        }else {
+            try {
+                com.simplonclone.simplonclone2.services.Apprenant apprenant = new com.simplonclone.simplonclone2.services.Apprenant();
+                ArrayList<com.simplonclone.simplonclone2.entity.Apprenant> apprenants = (ArrayList<com.simplonclone.simplonclone2.entity.Apprenant>) apprenant.getAll();
+                request.setAttribute("apprenants", apprenants);
 
-            com.simplonclone.simplonclone2.services.Brief brief = new com.simplonclone.simplonclone2.services.Brief();
-            ArrayList<com.simplonclone.simplonclone2.entity.Brief> briefs = (ArrayList<com.simplonclone.simplonclone2.entity.Brief>) brief.getAll();
-            request.setAttribute("briefs", briefs);
+                com.simplonclone.simplonclone2.services.Promo promo = new com.simplonclone.simplonclone2.services.Promo();
+                ArrayList<Promos> promos = (ArrayList<Promos>) promo.getAll();
+                request.setAttribute("promos", promos);
 
-            request.getRequestDispatcher("pages/formateur.jsp").forward(request, response);
+                com.simplonclone.simplonclone2.services.Brief brief = new com.simplonclone.simplonclone2.services.Brief();
+                ArrayList<com.simplonclone.simplonclone2.entity.Brief> briefs = (ArrayList<com.simplonclone.simplonclone2.entity.Brief>) brief.getAll();
+                request.setAttribute("briefs", briefs);
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                request.getRequestDispatcher("pages/formateur.jsp").forward(request, response);
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
             switch (request.getParameter("action")) {
                 case "addBrief":
                     String title = request.getParameter("title");
@@ -69,5 +75,6 @@ public class FormateurServlet extends HttpServlet {
                     response.sendRedirect("/FormateurServlet");
                     break;
             }
+
     }
 }
