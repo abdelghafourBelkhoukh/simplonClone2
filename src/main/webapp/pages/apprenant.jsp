@@ -16,7 +16,7 @@
 <body>
 <%@include file="../components/header.jsp" %>
 
-<div class="container mx-auto  dark:text-gray-100 h-[90vh] px-60 pt-10">
+<div class="container mx-auto  dark:text-gray-100 h-[90vh] px-60 pt-[18vh]">
     <h2 class="mb-4 text-2xl font-semibold leading-tight">brief Table</h2>
     <div class="overflow-x-auto">
         <table class="w-full p-6 text-xs text-left whitespace-nowrap">
@@ -38,12 +38,11 @@
             <% ArrayList<Brief> briefs = (ArrayList<Brief>) request.getAttribute("briefs");
 
 
-                for  (Brief brief : briefs) {%>
+            for  (Brief brief : briefs) {%>
                 <tr class="dark:bg-gray-700">
                     <td class="p-3 text-center"><%= brief.getName() %></td>
                     <td class="p-3 text-center"><%= brief.getDescription() %></td>
                     <td class="p-3 text-center"><%= brief.getPromosByPromoId().getName() %></td>
-
 <%--                    <td class="p-3 text-center">--%>
 <%--                        <form action="/ApprenantServlet" method="post">--%>
 <%--                            <input type="hidden" name="action" value="assignBriefToPromo">--%>

@@ -1,6 +1,10 @@
 package com.simplonclone.simplonclone2.services;
 
 
+import com.simplonclone.simplonclone2.dao.BriefDao;
+import com.simplonclone.simplonclone2.dao.PromoDao;
+import com.simplonclone.simplonclone2.entity.Brief;
+import com.simplonclone.simplonclone2.entity.Promos;
 import models.SendEnhancedRequestBody;
 import models.SendEnhancedResponseBody;
 import models.SendRequestMessage;
@@ -26,6 +30,10 @@ public class SendEmail {
             SendEmail.send(to, subject, message);
 
         }
+
+
+    }
+    public SendEmail() {
 
 
     }
@@ -59,6 +67,23 @@ public class SendEmail {
     }
 
 
+    public void sendEmailToFormateur(int promoId, int briefId, int apprenantId) {
+        Formateur formateur = new Formateur();
+        int formateurId = formateur.getFormateurId(promoId);
+        Brief brief = getBriefById(briefId);
+        Apprenant apprenant = new Apprenant();
+        com.simplonclone.simplonclone2.entity.Apprenant apprenant1 = apprenant.getOneApprenantById(apprenantId);
+        String to = formateur.getFormateurEmail(formateurId);
+        String subject = "New Rendu";
+        String message = "Bonjour,\n" +
+                "L'apprenant " + apprenant1.getFirstname() + " " + apprenant1.getLastname() + " a rendu le brief " + brief.getName() + ".\n" +
+                "Cordialement,\n" +
+                "L'équipe SimplonClone";
+        SendEmail.send(to, subject, message);
+    }
 
-
+    private Brief getBriefById(int briefId) {
+        BriefDao briefDao = new BriefDao();
+        return briefDao.getOne(briefId);
+    }
 }

@@ -18,12 +18,12 @@
 
 <div class="w-full h-auto flex flex-row-reverse pt-[18vh]">
 
-    <div class="flex flex-col justify-end w-[10%] h-[70vh] fixed px-[20px] pb-16 ">
+    <div class="flex flex-col justify-end w-[10%] h-[70vh] fixed px-[20px] pb-16 z-[10]">
         <a href="#my-modal-2" class="btn border-0 bg-red-600 my-6">Add Formateur</a>
         <a href="#my-modal-3" class="btn border-0 bg-red-600 my-6">Add Apprenant</a>
         <a href="#my-modal-4" class="btn border-0 bg-red-600 my-6">Add Promo</a>
         <!-- Put this part before </body> tag -->
-        <div class="modal" id="my-modal-2 z-10">
+        <div class="modal" id="my-modal-2">
             <div class="modal-box px-14">
                 <form action="../AdminServlet" method="post">
                     <H1 class=" font-medium leading-tight text-xl mt-10 mb-2 text-gray-600 text-center">Create Formateur</H1>
@@ -272,7 +272,7 @@
     </div>
     </div>
 
-    <div class=" flex justify-end items-end w-[15%] h-[70vh] top-[10vh] left-[0] fixed ">
+    <div class=" flex justify-end items-end w-[15%] h-[70vh] top-[10vh] left-[0] fixed z-[1]">
         <div class=" rounded w-[50%] h-[45vh] mb-4 mr-4">
             <div class="flex flex-col justify-evenly items-center h-[100%] w-full">
                 <a href="#formateur" class="border-4 border-gray-200 w-full py-6 text-center rounded-2xl bg-white hover:bg-gray-200 hover:border-gray-600">Formateurs</a>

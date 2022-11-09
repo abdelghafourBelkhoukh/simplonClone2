@@ -123,4 +123,25 @@ public class ApprenantDao {
         }
         return apprenants;
     }
+
+    public Apprenant getOneApprenantById(int apprenantId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        Apprenant apprenant;
+        try {
+            transaction.begin();
+            apprenant = entityManager.createQuery("SELECT a FROM Apprenant a WHERE a.id = :id", Apprenant.class)
+                    .setParameter("id", apprenantId)
+                    .getSingleResult();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return apprenant;
+    }
 }

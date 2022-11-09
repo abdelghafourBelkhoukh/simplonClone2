@@ -103,6 +103,27 @@ public class BriefDao extends DataAccessObject<Brief> {
             entityManager.close();
         }
     }
+
+    public Brief getOne(int briefId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        Brief brief;
+        try {
+            transaction.begin();
+            brief = entityManager.createQuery("SELECT b FROM Brief b WHERE b.id = :id", Brief.class)
+                    .setParameter("id", briefId)
+                    .getSingleResult();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return brief;
+    }
 }
 
 

@@ -38,6 +38,8 @@ public class AuthServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("apprenant", apprenant1);
+                session.setAttribute("id", apprenant1.getId());
+                session.setAttribute("promoId", apprenant1.getPromoId());
                 session.setAttribute("role", "apprenant");
                 session.setAttribute("firstName", apprenant1.getFirstname());
                 session.setAttribute("lastName", apprenant1.getLastname());

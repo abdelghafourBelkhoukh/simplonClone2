@@ -52,4 +52,24 @@ public class PromoDao {
         }
         return promos;
     }
+
+    public Promos getPromoById(int promoId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        Promos promo;
+        try {
+            transaction.begin();
+            promo = entityManager.createQuery("SELECT p FROM Promos p WHERE p.id = :id", Promos.class)
+                    .setParameter("id", promoId)
+                    .getSingleResult();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return promo;
+    }
 }

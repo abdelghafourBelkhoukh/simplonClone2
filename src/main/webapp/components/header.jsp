@@ -15,7 +15,7 @@
         <path d="M14.25 4h-4.5a.75.75 0 00-.75.75v1.5c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-1.5a.75.75 0 00-.75-.75zM9 11h6m-6 4h3.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="colorStroke"></path></svg
       ><span class="sc-6a4c5dd9-0 sc-87c2614c-0 HdEwm jwTbEc">Briefs</span>
     </div></a
-    ><a href="/workspaces" class="ml-6"
+    ><a href="../RenduServlet" class="ml-6"
     ><div class="flex flex-col items-center">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="sc-bf0a440d-0 jdUYLw">
         <path d="M5 11.913h2.301a1 1 0 01.907.577l.901 1.933a1 1 0 00.906.577H14a1 1 0 00.909-.582l.885-1.923a1 1 0 01.908-.582H19l-1.875-5.25A1 1 0 0016.183 6H7.817a1 1 0 00-.942.664L5 11.913z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round" class="colorStroke"></path>

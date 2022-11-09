@@ -9,12 +9,12 @@
         <class>com.simplonclone.simplonclone2.entity.Promos</class>
         <class>com.simplonclone.simplonclone2.entity.Brief</class>
         <class>com.simplonclone.simplonclone2.entity.Formateur</class>
+        <class>com.simplonclone.simplonclone2.entity.Rendus</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/simlponclone2"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>

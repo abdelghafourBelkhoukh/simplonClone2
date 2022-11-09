@@ -2,6 +2,8 @@ package com.simplonclone.simplonclone2.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Apprenant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +25,11 @@ public class Apprenant {
     @Basic
     @Column(name = "password")
     private String password;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "promoId", referencedColumnName = "id", nullable = false , insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumns({@JoinColumn(name = "promoId", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)})
     private Promos promosByPromoId;
+    @OneToMany(mappedBy = "apprenantByApprenantId")
+    private Collection<Rendus> rendusesById;
 
     public int getId() {
         return id;
@@ -55,6 +59,10 @@ public class Apprenant {
 
         if (promoId == null) return 0;
         return promoId;
+    }
+
+    public void setPromoId(Integer promoId) {
+        this.promoId = promoId;
     }
 
     public void setPromoId(int promoId) {
@@ -116,5 +124,13 @@ public class Apprenant {
 
     public void setPromosByPromoId(Promos promosByPromoId) {
         this.promosByPromoId = promosByPromoId;
+    }
+
+    public Collection<Rendus> getRendusesById() {
+        return rendusesById;
+    }
+
+    public void setRendusesById(Collection<Rendus> rendusesById) {
+        this.rendusesById = rendusesById;
     }
 }

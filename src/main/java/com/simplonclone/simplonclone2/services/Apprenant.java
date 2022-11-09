@@ -32,4 +32,9 @@ public class Apprenant {
         ApprenantDao apprenantDao = new ApprenantDao();
         return apprenantDao.getApprenantById(promoId);
     }
+
+    public com.simplonclone.simplonclone2.entity.Apprenant getOneApprenantById(int apprenantId) {
+        ApprenantDao apprenantDao = new ApprenantDao();
+        return apprenantDao.getOneApprenantById(apprenantId);
+    }
 }

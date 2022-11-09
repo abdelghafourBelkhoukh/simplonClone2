@@ -24,4 +24,14 @@ public class Formateur {
         FormateurDao formateurDao = new FormateurDao();
         formateurDao.assignToPromo(formateurId, promoId);
     }
+
+    public int getFormateurId(int promoId) {
+        FormateurDao formateurDao = new FormateurDao();
+        return formateurDao.getFormateurId(promoId);
+    }
+
+    public String getFormateurEmail(int formateurId) {
+        FormateurDao formateurDao = new FormateurDao();
+        return formateurDao.getFormateurEmail(formateurId);
+    }
 }

@@ -1,7 +1,7 @@
 package com.simplonclone.simplonclone2.controller;
 
 import com.simplonclone.simplonclone2.dao.BriefDao;
-import com.simplonclone.simplonclone2.entity.Brief;
+import com.simplonclone.simplonclone2.services.Brief;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

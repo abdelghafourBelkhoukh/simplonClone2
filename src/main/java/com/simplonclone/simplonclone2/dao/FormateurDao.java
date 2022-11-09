@@ -103,4 +103,46 @@ public class FormateurDao {
             entityManager.close();
         }
     }
+
+    public int getFormateurId(int promoId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        Formateur formateur;
+        try {
+            transaction.begin();
+            formateur = entityManager.createQuery("SELECT a FROM Formateur a WHERE a.promoId = :promoId", Formateur.class)
+                    .setParameter("promoId", promoId)
+                    .getSingleResult();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return formateur.getId();
+    }
+
+    public String getFormateurEmail(int formateurId) {
+        EmfSingleton emfSingleton = EmfSingleton.getEmfSingleton();
+        EntityManager entityManager = emfSingleton.getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        Formateur formateur;
+        try {
+            transaction.begin();
+            formateur = entityManager.createQuery("SELECT a FROM Formateur a WHERE a.id = :id", Formateur.class)
+                    .setParameter("id", formateurId)
+                    .getSingleResult();
+            transaction.commit();
+        } finally {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            entityManager.close();
+        }
+        return formateur.getEmail();
+    }
 }
