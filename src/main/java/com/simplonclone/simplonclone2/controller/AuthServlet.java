@@ -58,6 +58,7 @@ public class AuthServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("formateur", formateur1);
                 session.setAttribute("role", "formateur");
+                session.setAttribute("promoId", formateur1.getPromoId());
                 session.setAttribute("firstName", formateur1.getFirstname());
                 session.setAttribute("lastName", formateur1.getLastname());
                 session.setAttribute("email", formateur1.getEmail());

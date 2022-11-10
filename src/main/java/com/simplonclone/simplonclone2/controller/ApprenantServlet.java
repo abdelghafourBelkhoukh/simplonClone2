@@ -1,7 +1,7 @@
 package com.simplonclone.simplonclone2.controller;
 
 import com.simplonclone.simplonclone2.entity.Apprenant;
-import com.simplonclone.simplonclone2.entity.Formateur;
+import com.simplonclone.simplonclone2.entity.Brief;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -19,7 +19,8 @@ public class ApprenantServlet extends HttpServlet {
             }else {
                 try {
                     com.simplonclone.simplonclone2.services.Brief brief = new com.simplonclone.simplonclone2.services.Brief();
-                    ArrayList<com.simplonclone.simplonclone2.entity.Brief> briefs = (ArrayList<com.simplonclone.simplonclone2.entity.Brief>) brief.getAll((Apprenant) request.getSession().getAttribute("apprenant"));
+                    int promoId = (int) request.getSession().getAttribute("promoId");
+                    ArrayList<Brief> briefs = brief.getAll(promoId);
                     request.setAttribute("briefs", briefs);
                     request.getRequestDispatcher("pages/apprenant.jsp").forward(request, response);
                 } catch (Exception e) {

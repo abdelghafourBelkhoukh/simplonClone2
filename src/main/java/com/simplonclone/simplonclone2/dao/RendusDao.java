@@ -40,11 +40,18 @@ public class RendusDao {
         ArrayList<Rendus> rendus;
         try {
             transaction.begin();
-            rendus = (ArrayList<Rendus>) entityManager.createQuery("SELECT a FROM Rendus a WHERE a.briefId = :briefId AND a.formateurId = :formateurId AND a.apprenantId = :apprenantId", Rendus.class)
-                    .setParameter("briefId", briefId)
-                    .setParameter("formateurId", formateurId)
-                    .setParameter("apprenantId", apprenantId)
-                    .getResultList();
+            if (apprenantId == 0) {
+                rendus = (ArrayList<Rendus>) entityManager.createQuery("SELECT r FROM Rendus r WHERE r.briefId = :briefId AND r.formateurId = :formateurId")
+                        .setParameter("briefId", briefId)
+                        .setParameter("formateurId", formateurId)
+                        .getResultList();
+            } else {
+                rendus = (ArrayList<Rendus>) entityManager.createQuery("SELECT r FROM Rendus r WHERE r.briefId = :briefId AND r.formateurId = :formateurId AND r.apprenantId = :apprenantId")
+                        .setParameter("briefId", briefId)
+                        .setParameter("formateurId", formateurId)
+                        .setParameter("apprenantId", apprenantId)
+                        .getResultList();
+            }
             transaction.commit();
         } finally {
             if (transaction.isActive()) {

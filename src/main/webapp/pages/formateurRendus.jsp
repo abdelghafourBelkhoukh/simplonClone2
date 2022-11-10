@@ -56,21 +56,21 @@
                     <div class="py-4">
                         <div class="flex items-end justify-end">
                             <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-gray-600 text-white "><%=rendu.getMessage()%></span></div>
+                                <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-gray-600 text-white "><%=rendu.getApprenantByApprenantId().getFirstname()%> <%=rendu.getApprenantByApprenantId().getLastname()%> : <%=rendu.getMessage()%></span></div>
                             </div>
-                            <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" class="w-6 h-6 rounded-full order-2">
+<%--                            <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" class="w-6 h-6 rounded-full order-2">--%>
                         </div>
                     </div>
                     <%}%>
 <%--                </div>--%>
             </div>
             <div class="  h-[10vh] w-full ">
-                <form action="../RenduServlet" method="post" class="flex justify-between items-center h-full px-16">
-                    <input type="hidden" name="action" value="addRendu">
-                    <input type="hidden" name="briefId" value="<%=rendus.get(0).getBriefId()%>"/>
-                    <input class="w-[90%] px-8 h-12 rounded-xl border-1 border-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block" type="text" name="message" placeholder=" Message...">
-                    <input class="bg-black text-white px-6 py-3 rounded-xl" type="submit" value="Envoyer">
-                </form>
+<%--                <form action="../RenduServlet" method="post" class="flex justify-between items-center h-full px-16">--%>
+<%--                    <input type="hidden" name="action" value="addRendu">--%>
+<%--                    <input type="hidden" name="briefId" value="<%=rendus.get(0).getBriefId()%>"/>--%>
+<%--                    <input class="w-[90%] px-8 h-12 rounded-xl border-1 border-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block" type="text" name="message" placeholder=" Message...">--%>
+<%--                    <input class="bg-black text-white px-6 py-3 rounded-xl" type="submit" value="Envoyer <%=rendus.get(0).getBriefId()%>">--%>
+<%--                </form>--%>
             </div>
         </div>
         <%}%>

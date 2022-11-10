@@ -10,9 +10,9 @@ public class Brief {
         com.simplonclone.simplonclone2.dao.BriefDao briefDao = new com.simplonclone.simplonclone2.dao.BriefDao();
         return briefDao.getAll();
     }
-    public ArrayList<com.simplonclone.simplonclone2.entity.Brief> getAll(Apprenant apprenant) {
+    public ArrayList<com.simplonclone.simplonclone2.entity.Brief> getAll(int promoId) {
         com.simplonclone.simplonclone2.dao.BriefDao briefDao = new com.simplonclone.simplonclone2.dao.BriefDao();
-        return briefDao.getAll(apprenant.getPromoId());
+        return briefDao.getAll(promoId);
     }
 
 

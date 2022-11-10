@@ -11,6 +11,7 @@
 <html>
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
     <title>apprenant</title>
 </head>
 <body>
@@ -68,5 +69,6 @@
 
 
 <%@include file="../components/footer.jsp" %>
+<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 </html>
